@@ -20,24 +20,6 @@ def ParshCPI(html):
 	strTmp = html[startPos:endpos]
 	return  b"<table>"+ strTmp + b"</table>"#convert bytes to str failed implicitly
 
-	
-#提取各地区数据
-'''
-def GetHtmlData(url, index):
-                #print(url)
-                wp = urllib.request.urlopen(url)#打开连接
-                content = wp.read()	#获取页面内容
-                #print(content)
-                content = content.replace(b'\r\n',b'')
-                title = ParshTitle(content)
-                content = ParshCPI(content)
-                fl = title + str.encode(index)  # title is bytes index is str
-                ##将文件路径转为gb18030编码
-                fl = str(fl,'gb18030')
-                f = open(fl, 'w')
-                f.write(str(content))
-                f.close()
-'''
 
 def GetHtmlData(url, index, keyWord):
                 wp = urllib.request.urlopen(url)#打开连接
