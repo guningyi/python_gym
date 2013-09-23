@@ -48,6 +48,7 @@ def write_record_to_ball_db(value):
    conn = sqlite3.connect("d:\\python_project\double_record.db")
    c = conn.cursor()
    c.execute("""insert into record1 values ('value')""")
+   conn.commit()
    conn.close()
 
 
@@ -100,16 +101,16 @@ def parse_page_find_method(strUrl):
         else:
             blue_value=source[startPos+4:startPos+6]
             List.append(bytes.decode(blue_value))
-            serial_number= source[(startPos-158-18*6):(startPos-158-18*6+6)]
-            print(serial_number)
+            #serial_number= source[(startPos-158-18*6):(startPos-158-18*6+6)]
+            #print(serial_number)
             write_record_to_ball_db(List)
-            #print(List)
+            print(List)
             List = []
             start =startPos+6
 
 def main():
     print("start to grab the doubleBall record from zhcw")
-    num_list = range(77)
+    num_list = range(78)
     strStart = "http://kaijiang.zhcw.com/zhcw/html/ssq/list_"
     strEnd = ".html"
     for i in num_list:
