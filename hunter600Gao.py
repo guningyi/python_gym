@@ -60,9 +60,9 @@ def GetHtmlData(url, index, keyWord):
 
 if __name__ =="__main__":
 	#首先找到www.ssshot.com的首页
-	num_list = range(305)        #生成0～143的数字
+	num_list = range(329)        #生成0～143的数字
 	#http://ys.755bb.com/vodlist/15_1.htm
-	strUrl="http://ys.755bb.com/vodlist/1_"
+	strUrl="http://ys.18zzzz.com/vodlist/1_"
 	for i in num_list:
 		if i==0 or i==1:
 			continue
@@ -89,7 +89,10 @@ if __name__ =="__main__":
 		#keyWord = str.encode('恵けい','gb18030')
 		#keyWord = str.encode('青山葵','gb18030')
 		#keyWord = str.encode('朝倉','gb18030')
-		#keyWord = str.encode('伊織涼子','gb18030')
+		keyWord = str.encode('伊織涼子','gb18030')
 		#keyWord = str.encode('蜜井とわ','gb18030')
+		#keyWord = str.encode('鮎川','gb18030')
+		#keyWord = str.encode('持田美琴','gb18030')
+		#keyWord = str.encode('青山ナナ ','gb18030')
 		GetHtmlData(strTemp, index, keyWord)
 	

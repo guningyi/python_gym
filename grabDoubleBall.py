@@ -7,6 +7,7 @@ import re
 import sys
 import json
 import sqlite3
+import string
 
 class MyParser(HTMLParser):
     def __init__(self):
@@ -41,23 +42,29 @@ def create_double_ball_db():
     conn = sqlite3.connect("d:\\python_project\double_record.db")
     c = conn.cursor()
     c.execute(''' create table if not exists record1(record blob)''')
+    #c.execute(''' create table if not exists record1(data char)''')
     conn.commit()
     c.close()
+    return
 
 def write_record_to_ball_db(value):
+   #print(value)
    conn = sqlite3.connect("d:\\python_project\double_record.db")
    c = conn.cursor()
-   c.execute("""insert into record1 values ('value')""")
+   c.execute('insert into record1 values(%s)' % value)
    conn.commit()
    conn.close()
+   return
 
 
 def read_record_from_ball_db():
    conn = sqlite3.connect("d:\\python_project\double_record.db")
+   print("start to read data from ball_db")
    c = conn.cursor()
    c.execute('select * from record1 ')
-   for row in c:
-      print(row)
+   #for row in c:
+   #   print(row)
+   return
     
 
 def get_serial_number(strUrl):
@@ -89,7 +96,7 @@ def parse_page_find_method(strUrl):
     while True:
         #(strUrl)#debug serial number
         startPos= source.find(str.encode('<em'), start)
-        print(startPos)
+        #print(startPos)
         if startPos == -1:
             break
         key=source[startPos+4:startPos+9]
@@ -103,8 +110,9 @@ def parse_page_find_method(strUrl):
             List.append(bytes.decode(blue_value))
             #serial_number= source[(startPos-158-18*6):(startPos-158-18*6+6)]
             #print(serial_number)
-            write_record_to_ball_db(List)
-            print(List)
+            charData = "".join(List)
+            write_record_to_ball_db(charData)
+            #print(List)
             List = []
             start =startPos+6
 
@@ -119,6 +127,7 @@ def main():
         index = str(i)
         strUrl = strStart + index + strEnd
         parse_page_find_method(strUrl)
+    return
 
 
 
