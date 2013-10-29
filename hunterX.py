@@ -39,7 +39,7 @@ def GetHtmlData(url, index, keyWord):
                         f.close()
 
 
-
+#http://cn.fanhao.org/people/10779/
 if __name__ =="__main__":
 	#首先找到www.ssshot.com的首页
 	num_list = range(200)        #生成0～143的数字

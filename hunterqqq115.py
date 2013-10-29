@@ -61,7 +61,7 @@ def GetHtmlData(url, index, keyWord):
 if __name__ =="__main__":
 	num_list = range(35)        
 	#http://qqq115.com/html/part/30_31.html
-	strUrl="http://qqq115.com/html/part/30_"
+	strUrl="http://qqq115.org/html/part/30_"
 	for i in num_list:
 		if i==0 or i==1:
 			continue
@@ -71,7 +71,7 @@ if __name__ =="__main__":
 		#target = '川瀬さやか'
 		#keyWord = str.encode(target,'gb18030')
 		#keyWord = str.encode('川瀬さやか','gb18030')
-		#keyWord = str.encode('浅倉彩音','gb18030')
+		keyWord = str.encode('浅倉彩音','gb18030')
 		#keyWord = str.encode('北条美里','gb18030')
 		#keyWord = str.encode('夢野まりあ','gb18030')
 		#keyWord = str.encode('愛乃ゆな','gb18030')
@@ -105,7 +105,7 @@ if __name__ =="__main__":
 		#keyWord = str.encode('橘慶子','gb18030')
 		#keyWord = str.encode('持田優美香','gb18030')
 		#keyWord = str.encode('宮村恋','gb18030')
-		keyWord = str.encode('冴子','gb18030')
+		#keyWord = str.encode('冴子','gb18030')
 		#keyWord = str.encode('中居ちはる ','gb18030')
 		#keyWord = str.encode('小川まみ','gb18030')
 		#keyWord = str.encode('町村小夜子','gb18030')

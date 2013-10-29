@@ -94,5 +94,10 @@ if __name__ =="__main__":
 		#keyWord = str.encode('鮎川','gb18030')
 		#keyWord = str.encode('持田美琴','gb18030')
 		#keyWord = str.encode('青山ナナ ','gb18030')
+		#keyWord = str.encode('松下美雪','gb18030')
+		#keyWord = str.encode('八重いろは','gb18030')
+		#keyWord = str.encode('佐伯れい ','gb18030')
+		#keyWord = str.encode('吉野艶子 ','gb18030')
+		#keyWord = str.encode('藤田樹里奈 ','gb18030')
 		GetHtmlData(strTemp, index, keyWord)
 	
