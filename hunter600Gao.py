@@ -4,7 +4,7 @@ import urllib.request
 import re
 import os
 
-#´ÓhtmlÖĞ½âÎö±êÌâ
+#ä»htmlä¸­è§£ææ ‡é¢˜
 def ParshTitle(html):
 	startPos = html.find(b'<title>')
 	endpos = html.find(b'</title>')	
@@ -12,7 +12,7 @@ def ParshTitle(html):
 	strTmp = strTmp.replace(b'</font>', b'')
 	return strTmp
 
-#´ÓhtmlÖĞ½âÎöCPIÊı¾İ
+#ä»htmlä¸­è§£æCPIæ•°æ®
 def ParshCPI(html):
 	startPos = html.find(b'<div class="list">')
 	endpos = html.find(b'</div>')
@@ -21,18 +21,18 @@ def ParshCPI(html):
 	return  b"<table>"+ strTmp + b"</table>"#convert bytes to str failed implicitly
 
 	
-#ÌáÈ¡¸÷µØÇøÊı¾İ
+#æå–å„åœ°åŒºæ•°æ®
 '''
 def GetHtmlData(url, index):
                 #print(url)
-                wp = urllib.request.urlopen(url)#´ò¿ªÁ¬½Ó
-                content = wp.read()	#»ñÈ¡Ò³ÃæÄÚÈİ
+                wp = urllib.request.urlopen(url)#æ‰“å¼€è¿æ¥
+                content = wp.read()	#è·å–é¡µé¢å†…å®¹
                 #print(content)
                 content = content.replace(b'\r\n',b'')
                 title = ParshTitle(content)
                 content = ParshCPI(content)
                 fl = title + str.encode(index)  # title is bytes index is str
-                ##½«ÎÄ¼şÂ·¾¶×ªÎªgb18030±àÂë
+                ##å°†æ–‡ä»¶è·¯å¾„è½¬ä¸ºgb18030ç¼–ç 
                 fl = str(fl,'gb18030')
                 f = open(fl, 'w')
                 f.write(str(content))
@@ -40,8 +40,8 @@ def GetHtmlData(url, index):
 '''
 
 def GetHtmlData(url, index, keyWord):
-                wp = urllib.request.urlopen(url)#´ò¿ªÁ¬½Ó
-                content = wp.read()	#»ñÈ¡Ò³ÃæÄÚÈİ
+                wp = urllib.request.urlopen(url)#æ‰“å¼€è¿æ¥
+                content = wp.read()	#è·å–é¡µé¢å†…å®¹
                 content = content.replace(b'\r\n',b'')
                 flag  = content.find(keyWord)
                 if flag == -1:
@@ -50,7 +50,7 @@ def GetHtmlData(url, index, keyWord):
                         title = ParshTitle(content)
                         content = ParshCPI(content)
                         fl = title + str.encode(index)  # title is bytes index is str
-                        ##½«ÎÄ¼şÂ·¾¶×ªÎªgb18030±àÂë
+                        ##å°†æ–‡ä»¶è·¯å¾„è½¬ä¸ºgb18030ç¼–ç 
                         fl = str(fl,'gb18030')
                         f = open(fl, 'w')
                         f.write(str(content))
@@ -59,8 +59,8 @@ def GetHtmlData(url, index, keyWord):
 
 
 if __name__ =="__main__":
-	#Ê×ÏÈÕÒµ½www.ssshot.comµÄÊ×Ò³
-	num_list = range(329)        #Éú³É0¡«143µÄÊı×Ö
+	#é¦–å…ˆæ‰¾åˆ°www.ssshot.comçš„é¦–é¡µ
+	num_list = range(329)        #ç”Ÿæˆ0ï½143çš„æ•°å­—
 	#http://ys.755bb.com/vodlist/15_1.htm
 	strUrl="http://ys.18zzzz.com/vodlist/1_"
 	for i in num_list:
@@ -69,35 +69,45 @@ if __name__ =="__main__":
 		index = str(i)
 		strTemp = strUrl + index + ".htm"
 		#target = os.system(sys.argv[1])
-		#target = '´¨¤µ¤ä¤«'
+		#target = 'å·ç€¬ã•ã‚„ã‹'
 		#keyWord = str.encode(target,'gb18030')
-		#keyWord = str.encode('´¨¤µ¤ä¤«','gb18030')
-		#keyWord = str.encode('Ç³‚}²ÊÒô','gb18030')
-		#keyWord = str.encode('±±ÌõÃÀÀï','gb18030')
-		#keyWord = str.encode('‰ôÒ°¤Ş¤ê¤¢','gb18030')
-		#keyWord = str.encode('ÛÄË¤æ¤Ê','gb18030')
-		#keyWord = str.encode('Óî×ôÃÀÄÎ¡©','gb18030')
-		#keyWord = str.encode('ÄÚÌïÃÀÄÎ×Ó','gb18030')
-		#keyWord = str.encode('¸ß˜òÃÀ¾w','gb18030')
-		#keyWord = str.encode('ËÉÆÖ','gb18030')
-		#keyWord = str.encode('¼ÓÌÙÓ¢×Ó','gb18030')
-		#keyWord = str.encode('Äºî®¤æ¤¦¤³','gb18030')
-		#keyWord = str.encode('ËÉ¤¹¤ß¤ì','gb18030')
-		#keyWord = str.encode('·¼Ò°¾©×Ó','gb18030')
-		#keyWord = str.encode('³¯‚}','gb18030')
-		#keyWord = str.encode('›gÌïÃÀÄÎ×Ó','gb18030')
-		#keyWord = str.encode('{¤±¤¤','gb18030')
-		#keyWord = str.encode('ÇàÉ½¿û','gb18030')
-		#keyWord = str.encode('³¯‚}','gb18030')
-		keyWord = str.encode('ÒÁ¿—›ö×Ó','gb18030')
-		#keyWord = str.encode('ÃÛ¾®¤È¤ï','gb18030')
-		#keyWord = str.encode('õR´¨','gb18030')
-		#keyWord = str.encode('³ÖÌïÃÀÇÙ','gb18030')
-		#keyWord = str.encode('ÇàÉ½¥Ê¥Ê ','gb18030')
-		#keyWord = str.encode('ËÉÏÂÃÀÑ©','gb18030')
-		#keyWord = str.encode('°ËÖØ¤¤¤í¤Ï','gb18030')
-		#keyWord = str.encode('×ô²®¤ì¤¤ ','gb18030')
-		#keyWord = str.encode('¼ªÒ°ÆF×Ó ','gb18030')
-		#keyWord = str.encode('ÌÙÌï˜äÀïÄÎ ','gb18030')
+		#keyWord = str.encode('å·ç€¬ã•ã‚„ã‹','gb18030')
+		#keyWord = str.encode('æµ…å€‰å½©éŸ³','gb18030')
+		#keyWord = str.encode('åŒ—æ¡ç¾é‡Œ','gb18030')
+		#keyWord = str.encode('å¤¢é‡ã¾ã‚Šã‚','gb18030')
+		#keyWord = str.encode('æ„›ä¹ƒã‚†ãª','gb18030')
+		#keyWord = str.encode('å®‡ä½ç¾å¥ˆã€…','gb18030')
+		#keyWord = str.encode('å†…ç”°ç¾å¥ˆå­','gb18030')
+		#keyWord = str.encode('é«˜æ©‹ç¾ç·’','gb18030')
+		#keyWord = str.encode('æ¾æµ¦','gb18030')
+		#keyWord = str.encode('åŠ è—¤è‹±å­','gb18030')
+		#keyWord = str.encode('æš®ç”ºã‚†ã†ã“','gb18030')
+		#keyWord = str.encode('æ¾ã™ã¿ã‚Œ','gb18030')
+		#keyWord = str.encode('èŠ³é‡äº¬å­','gb18030')
+		#keyWord = str.encode('æœå€‰','gb18030')
+		#keyWord = str.encode('æ²¢ç”°ç¾å¥ˆå­','gb18030')
+		#keyWord = str.encode('æµã‘ã„','gb18030')
+		#keyWord = str.encode('é’å±±è‘µ','gb18030')
+		#keyWord = str.encode('æœå€‰','gb18030')
+		keyWord = str.encode('ä¼Šç¹”æ¶¼å­','gb18030')
+		#keyWord = str.encode('èœœäº•ã¨ã‚','gb18030')
+		#keyWord = str.encode('é®å·','gb18030')
+		#keyWord = str.encode('æŒç”°ç¾ç´','gb18030')
+		#keyWord = str.encode('é’å±±ãƒŠãƒŠ ','gb18030')
+		#keyWord = str.encode('æ¾ä¸‹ç¾é›ª','gb18030')
+		#keyWord = str.encode('å…«é‡ã„ã‚ã¯','gb18030')
+		#keyWord = str.encode('ä½ä¼¯ã‚Œã„ ','gb18030')
+		#keyWord = str.encode('å‰é‡è‰¶å­ ','gb18030')
+		#keyWord = str.encode('è—¤ç”°æ¨¹é‡Œå¥ˆ ','gb18030')
+		#keyWord = str.encode('å·å¶‹æˆç¾ ','gb18030')
+		#keyWord = str.encode('äº•å·ç¿”å­ ','gb18030')
+		#keyWord = str.encode('äººå¦»ç™¾æ™¯ ','gb18030')
+		#keyWord = str.encode('å¤‰æ…‹å®£è¨€ ','gb18030')
+		#keyWord = str.encode('æ©˜ã‚¨ãƒ¬ãƒŠ ','gb18030')
+		#keyWord = str.encode('ä¸­å±±ç©‚é¦™ ','gb18030')
+		#keyWord = str.encode('é€Ÿæ°´æ€œ ','gb18030')
+		#keyWord = str.encode('æ¨¹æœ¬ã¤ã°ã• ','gb18030')
+		#keyWord = str.encode('HYK-017 ','gb18030')
+		#keyWord = str.encode('HYK-027 ','gb18030')
 		GetHtmlData(strTemp, index, keyWord)
 	
